@@ -1,0 +1,430 @@
+/* Estilos para MochiCat */
+
+:root {
+    --mochi-pink: #FFC0CB; /* Rosa Pastel Principal */
+    --mochi-light-pink: #FDEEF4; /* Rosa muy pálido para fondos */
+    --mochi-grey: #D3D3D3; /* Gris Suave de Goma */
+    --mochi-dark-grey: #A9A9A9; /* Un gris un poco más oscuro para texto o acentos */
+    --mochi-white: #FFFFFF;
+    --mochi-peach: #FFB6C1; /* Tono durazno/rosa */
+    --mochi-lavender: #E6E6FA; /* Lavanda suave */
+    --mochi-text: #5D5D5D; /* Color de texto principal, gris oscuro */
+    --mochi-heart: #FF69B4; /* Rosa más intenso para el corazón */
+
+    --font-logo-family: 'Fredoka', sans-serif; /* Tipografía redondeada para el logo (si se usara texto) */
+    --font-handwritten: 'Kalam', cursive; /* Tipografía manuscrita */
+    --font-body: 'Fredoka', sans-serif; /* Tipografía principal del cuerpo */
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--mochi-text);
+    background-color: var(--mochi-light-pink);
+    line-height: 1.6;
+}
+
+/* Header y Navbar */
+.navbar {
+    background-color: var(--mochi-white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding-top: 0.5rem; /* Reducido un poco para acomodar mejor el logo */
+    padding-bottom: 0.5rem; /* Reducido un poco */
+}
+
+/* ESTILO PARA LA IMAGEN DEL LOGO */
+.mochicat-logo-img {
+    height: 50px; /* Altura deseada para el logo */
+    width: auto; /* Para mantener la proporción */
+    object-fit: contain;
+}
+/* Eliminamos .logo-text y .heart-logo ya que no se usan */
+
+.navbar-nav .nav-link {
+    color: var(--mochi-dark-grey);
+    font-weight: 500;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--mochi-peach);
+}
+
+.navbar-toggler {
+    border-color: var(--mochi-peach);
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 182, 193, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+
+/* Carrusel MODIFICADO */
+#hero-carousel {
+    background-color: var(--mochi-light-pink); /* Fondo para el área del carrusel */
+}
+
+#hero-carousel .carousel-inner {
+    overflow: visible; /* Permitir que se vean partes de los slides adyacentes si es necesario para el efecto blur */
+}
+
+#hero-carousel .carousel-item {
+    height: 550px; /* Altura fija para los items del carrusel */
+    display: flex; /* Para centrar la imagen si es necesario */
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease-in-out, filter 0.6s ease-in-out, transform 0.6s ease-in-out; /* Transición suave para el blur y otros efectos */
+    background-color: transparent; /* El fondo lo da el #hero-carousel o la imagen */
+}
+
+#hero-carousel .carousel-item img {
+    display: block;
+    max-width: 100%; /* La imagen no será más ancha que el contenedor */
+    height: 100%;    /* La imagen intentará llenar la altura del item */
+    object-fit: contain; /* Muestra la imagen completa, puede dejar espacios si la proporción no coincide */
+                         /* Si prefieres que cubra y recorte, usa 'cover' */
+    margin: 0 auto; /* Centra la imagen horizontalmente si object-fit: contain; deja espacios */
+}
+
+/* Clase para el efecto blur en slides no activos */
+#hero-carousel .carousel-item:not(.active) {
+    filter: blur(4px);
+    opacity: 0.6;
+    transform: scale(0.95); /* Efecto sutil de encogimiento */
+}
+/* Aseguramos que el activo no tenga estos efectos */
+#hero-carousel .carousel-item.active {
+    filter: blur(0px);
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+#hero-carousel .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.45); /* Un poco más de opacidad */
+    border-radius: 10px;
+    padding: 20px; /* Más padding */
+    bottom: 40px; /* Subir un poco el caption */
+}
+#hero-carousel .carousel-caption h5 {
+    font-family: var(--font-logo-family); /* Usar la variable definida */
+    color: var(--mochi-pink);
+    font-size: 2rem; /* Un poco más grande */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+#hero-carousel .carousel-caption p {
+    font-size: 1.2rem; /* Un poco más grande */
+    color: var(--mochi-white);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+
+
+/* Títulos de Sección */
+.section-title {
+    font-family: var(--font-logo-family);
+    color: var(--mochi-peach);
+    font-weight: 600;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--mochi-pink);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+#contacto .section-title::after {
+    background-color: var(--mochi-lavender);
+}
+
+
+/* Kawaii Phrases Section */
+#kawaii-phrases {
+    background-color: var(--mochi-white);
+}
+.handwritten-font {
+    font-family: var(--font-handwritten);
+    font-size: 1.8rem;
+    color: var(--mochi-text);
+    line-height: 1.4;
+}
+.phrase-bubble {
+    background-color: var(--mochi-light-pink);
+    padding: 20px;
+    border-radius: 15px 15px 15px 0;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+
+/* Mission Section */
+#nosotros {
+    background-color: var(--mochi-lavender);
+}
+.mission-image {
+    border: 5px solid var(--mochi-white);
+    max-width: 300px;
+}
+
+
+/* Contact Form Section */
+#contacto {
+    background-color: var(--mochi-peach);
+    color: var(--mochi-white);
+}
+#contacto .section-title, #contacto p {
+    color: var(--mochi-white);
+}
+#contacto .section-title::after {
+    background-color: var(--mochi-white);
+}
+#contactForm .form-label {
+    font-weight: 500;
+    color: var(--mochi-light-pink);
+}
+#contactForm .form-control {
+    border-radius: 10px;
+    border: 2px solid var(--mochi-light-pink);
+    padding: 0.75rem 1rem;
+    background-color: rgba(255,255,255,0.9);
+}
+#contactForm .form-control:focus {
+    border-color: var(--mochi-white);
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.3);
+    background-color: var(--mochi-white);
+}
+.btn-kawaii {
+    background-color: var(--mochi-pink);
+    border-color: var(--mochi-pink);
+    color: var(--mochi-text);
+    font-family: var(--font-logo-family);
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+.btn-kawaii:hover {
+    background-color: var(--mochi-white);
+    border-color: var(--mochi-white);
+    color: var(--mochi-peach);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+#form-feedback {
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    background-color: var(--mochi-grey);
+    color: var(--mochi-white);
+}
+footer p {
+    margin-bottom: 0.5rem;
+    color: var(--mochi-text);
+}
+.social-icons a {
+    color: var(--mochi-white);
+    font-size: 1.8rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+.social-icons a:hover {
+    color: var(--mochi-peach);
+}
+
+/* Utilidades */
+.rounded-3 {
+    border-radius: 15px !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) { /* Ajustado para que el logo no se vea muy grande antes de colapsar */
+    .mochicat-logo-img {
+        height: 45px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mochicat-logo-img {
+        height: 40px; /* Logo un poco más pequeño en móviles */
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .handwritten-font {
+        font-size: 1.5rem;
+    }
+    #hero-carousel .carousel-item {
+        height: 400px; /* Reducir altura del carrusel en móviles */
+    }
+    #hero-carousel .carousel-caption h5 {
+        font-size: 1.5rem;
+    }
+    #hero-carousel .carousel-caption p {
+        font-size: 0.9rem;
+    }
+    #hero-carousel .carousel-caption {
+        bottom: 20px; /* Ajustar posición del caption */
+        padding: 10px;
+    }
+    .phrase-bubble {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 90%;
+    }
+}
+
+/* Carrusel mejorado */
+#hero-carousel-container {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#hero-carousel {
+    position: relative;
+    width: 100%;
+    background-color: var(--mochi-light-pink);
+}
+
+#hero-carousel .carousel-inner {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#hero-carousel .carousel-item {
+    transition: transform 0.6s ease-in-out;
+    position: relative;
+    display: none;
+    float: left;
+    width: 100%;
+    height: 550px;
+    backface-visibility: hidden;
+}
+
+#hero-carousel .carousel-item.active,
+#hero-carousel .carousel-item-next,
+#hero-carousel .carousel-item-prev {
+    display: block;
+}
+
+/* Transiciones */
+#hero-carousel .carousel-item-next:not(.carousel-item-start),
+#hero-carousel .active.carousel-item-end {
+    transform: translateX(100%);
+}
+
+#hero-carousel .carousel-item-prev:not(.carousel-item-end),
+#hero-carousel .active.carousel-item-start {
+    transform: translateX(-100%);
+}
+
+#hero-carousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Efecto blur para slides no activos (opcional) */
+#hero-carousel .carousel-item:not(.active) {
+    filter: blur(2px);
+    opacity: 0.7;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* Controles del carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 0.8;
+    transition: opacity 0.15s ease;
+    z-index: 1;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-size: 100% 100%;
+}
+
+/* Indicadores */
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.carousel-indicators button {
+    box-sizing: content-box;
+    flex: 0 1 auto;
+    width: 30px;
+    height: 3px;
+    margin: 0 5px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    opacity: 0.5;
+    transition: opacity 0.6s ease;
+}
+
+.carousel-indicators button.active {
+    opacity: 1;
+}
+
+/* Captions */
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 1.25rem;
+    left: 15%;
+    padding: 1.25rem;
+    color: #fff;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.45);
+    border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #hero-carousel .carousel-item {
+        height: 400px;
+    }
+    
+    .carousel-caption h5 {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+    
+    .carousel-caption {
+        right: 10%;
+        left: 10%;
+        padding: 0.75rem;
+    }
+}
